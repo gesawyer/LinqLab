@@ -12,6 +12,8 @@ namespace LinqLab
         public bool CanDrive => Age >= 16;
         public bool CanDrink=> Age >= 21;
 
+        public bool Under25 => Age < 25;
+
         public Student(string Name, int Age)
         {
             this.Name = Name;

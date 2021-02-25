@@ -37,7 +37,7 @@ namespace LinqLab
             Console.WriteLine();
 
             Console.WriteLine();
-            Console.WriteLine("4) All values between 100000 and 999999");
+            Console.WriteLine("5) All values between 100000 and 999999");
             List<int> btw9 = nums1.Where(x => x >= 100000 && x <= 999999).ToList();
             foreach (int num in btw9.ToList())
             {
@@ -82,12 +82,45 @@ namespace LinqLab
             Student w = students.OrderByDescending(x => x.Age).Last();
             Console.WriteLine(w.Name);
 
-            //Console.WriteLine("2)Find the oldest student under 25");
-            //var under25 = from v in students
-            //              where v.Age < 25
-            //              select v.Name;
-            //Student f = under25.OrderByDescending(x => x.Age).First();
-            //Console.WriteLine(f.Name);
+            Console.WriteLine("4)Find the oldest student under 25");
+            List<Student> oldestUnder25 = students.Where(x => x.Age <25).ToList();
+            Student q = oldestUnder25.OrderByDescending(x => x.Age).First();
+            Console.WriteLine(q.Name);
+
+            Console.WriteLine("5)Find the even aged over 21");
+            List<Student> os5= students.Where(x => x.CanDrink && x.Age%2 == 0).ToList();
+            foreach (Student d in os5)
+            {
+                Console.WriteLine(d.Name);
+            }
+
+            Console.WriteLine("6)Find all teenaged students");
+            List<Student> s6 = students.Where(x => x.Age >=13 && x.Age <= 19).ToList();
+            foreach (Student d in s6)
+            {
+                Console.WriteLine(d.Name);
+            }
+
+
+            //var vowelsStart = students.Where(x => Student.Any(vowel=> x.StartsWith(vowel)));
+            
+            Console.WriteLine("7) Find all students whos names start with a vowel");
+            char[] vowel = "aeiou".ToCharArray();
+            var queryResults=
+                from n in students
+                //where n.StartsWith(vowel)
+                select n;
+            foreach (var item in queryResults)
+            {
+                Console.WriteLine(item);
+            }
+
+
+
+
+
+
+
 
 
 
