@@ -12,20 +12,6 @@ namespace LinqLab
 
             List<int> odds = nums1.Where(x => x % 2 == 1).ToList();
 
-            //foreach(int num in odds)
-            //{
-            //    Console.WriteLine(num);
-            //}
-
-            //Console.WriteLine("Query syntax");
-
-            //var odds2 = from num in nums1
-            //            where num % 2 == 1
-            //            select num;
-            //foreach( int num in odds2.ToList())
-            //{
-            //    Console.WriteLine(num);
-            //}
             Console.WriteLine("1) Minimum number");
             int lowtNum = nums1.Min();
             Console.WriteLine(lowtNum);
@@ -78,18 +64,35 @@ namespace LinqLab
             students.Add(new Student("Abe", 33)); 
             students.Add(new Student("Curtis", 10));
 
-            Console.WriteLine("Find the oldest student");
-            Student s = students.OrderByDescending(x => x.Age).First();
-            Console.WriteLine(s.Name);
+            
 
             Console.WriteLine();
-            Console.WriteLine("Get me a list of all the students that can drive.");
-            List<Student> drivers = students.Where(x => x.CanDrive == true).ToList();
-            foreach (Student d in drivers)
+            Console.WriteLine("1) students that can drive.");
+            List<Student> drinkers = students.Where(x => x.CanDrink == true).ToList();
+            foreach (Student d in drinkers)
             {
                 Console.WriteLine(d.Name);
             }
-            
+
+            Console.WriteLine("2)Find the oldest student");
+            Student s = students.OrderByDescending(x => x.Age).First();
+            Console.WriteLine(s.Name);
+
+            Console.WriteLine("3)Find the youngest student");
+            Student w = students.OrderByDescending(x => x.Age).Last();
+            Console.WriteLine(w.Name);
+
+            //Console.WriteLine("2)Find the oldest student under 25");
+            //var under25 = from v in students
+            //              where v.Age < 25
+            //              select v.Name;
+            //Student f = under25.OrderByDescending(x => x.Age).First();
+            //Console.WriteLine(f.Name);
+
+
+
+
+
 
         }
     }
